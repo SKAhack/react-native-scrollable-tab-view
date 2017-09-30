@@ -1,17 +1,18 @@
-const React = require('react');
-const ReactNative = require('react-native');
-const {Component, } = React;
-const {View, StyleSheet, } = ReactNative;
+import React from 'react';
+import {View, StyleSheet, } from 'react-native';
 
-const StaticContainer = require('./StaticContainer');
+import StaticContainer from './StaticContainer';
 
-const SceneComponent = (Props) => {
-  const {shouldUpdated, ...props, } = Props;
-  return <View {...props}>
-      <StaticContainer shouldUpdate={shouldUpdated}>
-        {props.children}
-      </StaticContainer>
-  </View>;
-};
+class SceneComponent extends React.PureComponent {
+  render () {
+    const {shouldUpdated, ...props, } = this.props;
 
-module.exports = SceneComponent;
+    return <View {...props}>
+        <StaticContainer shouldUpdate={shouldUpdated}>
+          {props.children}
+        </StaticContainer>
+    </View>;
+  }
+}
+
+export default SceneComponent;
